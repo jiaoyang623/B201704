@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="guru.ioio.bravo.utils.Utils" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="data"
+            type="guru.ioio.bravo.jmessage.model.CommentBean" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/shape_message_time"
+            android:gravity="center"
+            android:paddingLeft="7dp"
+            android:paddingRight="7dp"
+            android:text="@{Utils.makeDate(data.time)}"
+            android:textColor="#ffffff"
+            android:textSize="10sp"
+            android:visibility="@{data.showDate?View.VISIBLE:View.GONE}" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <ImageView
+                android:id="@+id/avatar"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:imageUri="@{data.avatarUri}" />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="14dp"
+                android:layout_toRightOf="@+id/avatar"
+                android:text="@{data.name}"
+                android:textColor="#666666"
+                android:textSize="11sp" />
+
+            <RelativeLayout
+                android:layout_width="236dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/name"
+                android:layout_marginLeft="6dp"
+                android:layout_marginTop="8dp"
+                android:layout_toRightOf="@+id/avatar"
+                android:background="@drawable/message_bubble_white"
+                android:paddingBottom="12dp"
+                android:paddingLeft="19dp"
+                android:paddingRight="12dp"
+                android:paddingTop="12dp">
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{data.title}"
+                    android:textColor="#333333"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_below="@+id/time"
+                    android:layout_marginTop="12dp"
+                    android:imageUri="@{data.imageUri}" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/title"
+                    android:layout_toRightOf="@+id/image"
+                    android:text="@{data.description}"
+                    android:textColor="#666666"
+                    android:textSize="11sp" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</layout>

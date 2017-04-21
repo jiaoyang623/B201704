@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="data"
+            type="guru.ioio.bravo.jmessage.model.MessageBean" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:background="#ffffff"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/head"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_margin="12dp"
+            android:imageDrawable="@{data.defaultDrawable}"
+            android:imageUri="@{data.headUri}" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_toRightOf="@+id/head"
+            android:maxLines="1"
+            android:text="@{data.title}"
+            android:textColor="#333333"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:layout_toRightOf="@+id/head"
+            android:maxLines="1"
+            android:text="@{data.description}"
+            android:textColor="#bbbbbb"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="16dp"
+            android:maxLines="1"
+            android:text="@{data.time}"
+            android:textColor="#bbbbbb"
+            android:textSize="11sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="16dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/time"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/shape_message_reddot"
+            android:gravity="center"
+            android:paddingLeft="6dp"
+            android:paddingRight="6dp"
+            android:text="@{String.valueOf(data.count)}"
+            android:textColor="#ffffff"
+            android:textSize="9sp"
+            android:visibility="@{data.count==0?View.INVISIBLE:View.VISIBLE}" />
+    </RelativeLayout>
+</layout>
