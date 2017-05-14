@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="presenter"
+            type="guru.ioio.bravo.FullScreenActivity" />
+    </data>
+
+    <guru.ioio.bravo.widget.FixedPaddingRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/shape_full_screen"
+        android:fitsSystemWindows="true">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="#ffaa11"
+            android:imageUri="@{presenter.background}"
+            android:padding="1dp"
+            android:scaleType="centerCrop" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="20dp" />
+    </guru.ioio.bravo.widget.FixedPaddingRelativeLayout>
+</layout>

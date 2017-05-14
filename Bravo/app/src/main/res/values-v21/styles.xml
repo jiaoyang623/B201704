@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme.TranslucentStatus" parent="android:Theme">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">false</item>
+        <item name="android:windowClipToOutline">true</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+</resources>
