@@ -83,6 +83,10 @@
             android:name=".ListRefreshActivity"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".GifActivity"
+            android:screenOrientation="portrait" />
+        
         <!-- Required SDK 核心功能-->
         <!-- 可配置android:process参数将PushService放在其他进程中 -->
         <service
