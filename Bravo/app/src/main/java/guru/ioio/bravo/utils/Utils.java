@@ -94,4 +94,12 @@ public class Utils {
     public static String makeDate(long timestamp) {
         return DATE_FORMAT_0.format(new Date(timestamp));
     }
+
+    public static void copy(InputStream in, OutputStream out) throws IOException {
+        byte[] buffer = new byte[1024];
+        int count;
+        while ((count = in.read(buffer)) != -1) {
+            out.write(buffer, 0, count);
+        }
+    }
 }

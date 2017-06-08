@@ -49,6 +49,14 @@
         </activity>
 
         <activity
+            android:name=".WaterMarkActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".Pull2RefreshActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
             android:name=".jmessage.MessageListActivity"
             android:screenOrientation="sensorPortrait"
             android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
@@ -86,7 +94,7 @@
         <activity
             android:name=".GifActivity"
             android:screenOrientation="portrait" />
-        
+
         <!-- Required SDK 核心功能-->
         <!-- 可配置android:process参数将PushService放在其他进程中 -->
         <service
