@@ -23,7 +23,9 @@
         <activity
             android:name=".PannelActivity"
             android:screenOrientation="portrait" />
-
+        <activity
+            android:name=".RecyclerActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
