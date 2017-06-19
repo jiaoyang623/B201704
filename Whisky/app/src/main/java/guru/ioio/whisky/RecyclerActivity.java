@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ import guru.ioio.whisky.model.RecyclerBean;
  * for RecyclerView
  */
 
-public class RecyclerActivity extends Activity {
+public class RecyclerActivity extends Activity implements SwipeRefreshLayout.OnRefreshListener {
     private ActivityRecycleBinding mBinding;
     private RBindingBaseAdapter<RecyclerBean> mAdapter;
 
@@ -34,15 +35,35 @@ public class RecyclerActivity extends Activity {
                 2, GridLayoutManager.VERTICAL, false);
         mBinding.recycler.setLayoutManager(mgr);
         mBinding.recycler.setAdapter(mAdapter);
+        mBinding.refresh.setOnRefreshListener(this);
     }
 
     private List<RecyclerBean> getMock() {
         List<RecyclerBean> list = new ArrayList<>();
-        for (int i = 0; i < 32; i++) {
+        for (int i = 0; i < 256; i++) {
             RecyclerBean bean = new RecyclerBean("title " + i, "desc", "time" + i);
             list.add(bean);
         }
         return list;
     }
 
+    @Override
+    public void onRefresh() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mBinding.refresh.setRefreshing(false);
+                    }
+                });
+            }
+        }).start();
+    }
 }
