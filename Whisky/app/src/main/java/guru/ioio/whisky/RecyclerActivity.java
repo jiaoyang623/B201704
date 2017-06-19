@@ -37,7 +37,7 @@ public class RecyclerActivity extends Activity implements SwipeRefreshLayout.OnR
 
     protected RVBindingBaseAdapter getAdapter() {
         return new RVBindingBaseAdapter<RecyclerBean>(R.layout.item_recycler, BR.data)
-                .add(getMock()).addPresenter(BR.presenter, this);
+                .add(getMock(256)).addPresenter(BR.presenter, this);
     }
 
     protected RecyclerView.LayoutManager getLayoutManager() {
@@ -45,9 +45,9 @@ public class RecyclerActivity extends Activity implements SwipeRefreshLayout.OnR
                 2, GridLayoutManager.VERTICAL, false);
     }
 
-    protected List<RecyclerBean> getMock() {
+    protected List<RecyclerBean> getMock(int size) {
         List<RecyclerBean> list = new ArrayList<>();
-        for (int i = 0; i < 256; i++) {
+        for (int i = 0; i < size; i++) {
             RecyclerBean bean = new RecyclerBean("title " + i, "desc", "time" + i);
             switch (i % 3) {
                 case 0:
