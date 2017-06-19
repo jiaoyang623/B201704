@@ -30,16 +30,16 @@ public class RecyclerActivity extends Activity {
         mBinding.setPresenter(this);
         mAdapter = new RBindingBaseAdapter<RecyclerBean>(R.layout.item_recycler, BR.data)
                 .add(getMock());
-        mBinding.recycler.setAdapter(mAdapter);
         GridLayoutManager mgr = new GridLayoutManager(getApplicationContext(),
-                GridLayoutManager.DEFAULT_SPAN_COUNT, GridLayoutManager.VERTICAL, false);
+                2, GridLayoutManager.VERTICAL, false);
         mBinding.recycler.setLayoutManager(mgr);
+        mBinding.recycler.setAdapter(mAdapter);
     }
 
     private List<RecyclerBean> getMock() {
         List<RecyclerBean> list = new ArrayList<>();
         for (int i = 0; i < 32; i++) {
-            RecyclerBean bean = new RecyclerBean("title " + i, "desc", new Date().toString());
+            RecyclerBean bean = new RecyclerBean("title " + i, "desc", "time" + i);
             list.add(bean);
         }
         return list;

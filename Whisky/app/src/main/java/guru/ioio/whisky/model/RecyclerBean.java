@@ -10,7 +10,7 @@ public class RecyclerBean {
     public String time;
 
     public RecyclerBean(String title, String desc, String time) {
-        this.time = time;
+        this.title = title;
         this.desc = desc;
         this.time = time;
     }

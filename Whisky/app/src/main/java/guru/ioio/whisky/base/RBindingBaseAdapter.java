@@ -52,10 +52,9 @@ public class RBindingBaseAdapter<T> extends RecyclerView.Adapter<RBindingBaseAda
     public RViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         ViewDataBinding binding = DataBindingUtil.inflate(
                 LayoutInflater.from(parent.getContext()), sLayoutId, parent, false);
-        return new RViewHolder(binding);
+        return new RViewHolder(binding, sValueId);
     }
 
-    @Override
     public void onBindViewHolder(RViewHolder holder, int position) {
         holder.bind(mList.get(position));
     }
@@ -65,16 +64,18 @@ public class RBindingBaseAdapter<T> extends RecyclerView.Adapter<RBindingBaseAda
         return mList.size();
     }
 
-    public class RViewHolder extends RecyclerView.ViewHolder {
+    public static class RViewHolder extends RecyclerView.ViewHolder {
         private ViewDataBinding binding;
+        private int valueId;
 
-        public RViewHolder(ViewDataBinding binding) {
+        public RViewHolder(ViewDataBinding binding, int valueId) {
             super(binding.getRoot());
             this.binding = binding;
+            this.valueId = valueId;
         }
 
-        public void bind(T t) {
-            binding.setVariable(sValueId, t);
+        public void bind(Object t) {
+            binding.setVariable(valueId, t);
             binding.executePendingBindings();
         }
     }
