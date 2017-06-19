@@ -22,8 +22,7 @@ import guru.ioio.whisky.model.RecyclerBean;
  */
 
 public class RecyclerActivity extends Activity implements SwipeRefreshLayout.OnRefreshListener {
-    private ActivityRecycleBinding mBinding;
-    private RVBindingBaseAdapter<RecyclerBean> mAdapter;
+    protected ActivityRecycleBinding mBinding;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,11 +30,14 @@ public class RecyclerActivity extends Activity implements SwipeRefreshLayout.OnR
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_recycle);
         mBinding.setPresenter(this);
         mBinding.refresh.setOnRefreshListener(this);
-        mAdapter = new RVBindingBaseAdapter<RecyclerBean>(R.layout.item_recycler, BR.data)
-                .add(getMock()).addPresenter(BR.presenter, this);
 
         mBinding.recycler.setLayoutManager(getLayoutManager());
-        mBinding.recycler.setAdapter(mAdapter);
+        mBinding.recycler.setAdapter(getAdapter());
+    }
+
+    protected RVBindingBaseAdapter getAdapter() {
+        return new RVBindingBaseAdapter<RecyclerBean>(R.layout.item_recycler, BR.data)
+                .add(getMock()).addPresenter(BR.presenter, this);
     }
 
     protected RecyclerView.LayoutManager getLayoutManager() {
@@ -43,7 +45,7 @@ public class RecyclerActivity extends Activity implements SwipeRefreshLayout.OnR
                 2, GridLayoutManager.VERTICAL, false);
     }
 
-    private List<RecyclerBean> getMock() {
+    protected List<RecyclerBean> getMock() {
         List<RecyclerBean> list = new ArrayList<>();
         for (int i = 0; i < 256; i++) {
             RecyclerBean bean = new RecyclerBean("title " + i, "desc", "time" + i);

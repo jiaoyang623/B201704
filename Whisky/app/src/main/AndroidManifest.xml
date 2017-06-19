@@ -29,6 +29,10 @@
         <activity
             android:name=".StaggeredRecyclerActivity"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".RVViewPagerActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
