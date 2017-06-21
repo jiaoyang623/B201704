@@ -11,6 +11,7 @@ import guru.ioio.whisky.model.RecyclerBean;
 
 /**
  * Created by daniel on 6/19/17.
+ * for viewpager using
  */
 
 public class RVViewPagerActivity extends RecyclerActivity {
