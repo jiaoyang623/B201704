@@ -4,22 +4,53 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.3"
     defaultConfig {
-        applicationId "guru.ioio.whisky"
+        applicationId "guru.ioio.whisky2"
+        testApplicationId applicationId + '.test'
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+    signingConfigs {
+        release {
+            storeFile file('test.keystore')
+            storePassword '000000'
+            keyPassword '000000'
+            keyAlias 'test.keystore'
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+
+        debug {
+            applicationIdSuffix ".debug"
         }
     }
 
     dataBinding {
         enabled = true
+    }
+
+    productFlavors {
+        flavor1 {
+            applicationId 'guru.ioio.whisky.f1'
+        }
+
+        flavor2 {
+            applicationId 'guru.ioio.whisky.f2'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = "1.7"
+        targetCompatibility = "1.7"
     }
 }
 
@@ -32,5 +63,16 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:25.+'
     compile 'com.android.support:support-v4:25.+'
     compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    compile 'com.linsea:opendanmaku:1.0.0@aar'
+}
 
+task alpha << {
+//    4.times {
+//        android.productFlavors."flavor$it"={
+//            applicationId "guru.ioio.whisky.f$it"
+//        }
+//    }
+
+    println android.productFlavors
 }
