@@ -32,17 +32,42 @@ public class RVBindingBaseAdapter<T> extends RecyclerView.Adapter<RVBindingBaseA
     }
 
     public RVBindingBaseAdapter<T> add(List<T> data) {
+        return add(data, mList.size());
+    }
+
+    public RVBindingBaseAdapter<T> add(List<T> data, int position) {
         if (data == null) {
             return this;
         }
 
         data.removeAll(mList);
         if (data.size() > 0) {
-            int t = mList.size();
-            mList.addAll(data);
-            notifyItemRangeInserted(t, data.size());
+            mList.addAll(position, data);
+            notifyItemRangeInserted(position, data.size());
         }
+        return this;
+    }
 
+    public RVBindingBaseAdapter<T> delete(T t) {
+        int pos = mList.indexOf(t);
+        if (pos >= 0) {
+            mList.remove(pos);
+            notifyItemRemoved(pos);
+        }
+        return this;
+    }
+
+    public RVBindingBaseAdapter<T> addToHead(T t) {
+        return add(t, 0);
+    }
+
+    public RVBindingBaseAdapter<T> addToTail(T t) {
+        return add(t, mList.size());
+    }
+
+    public RVBindingBaseAdapter<T> add(T t, int position) {
+        mList.add(position, t);
+        notifyItemInserted(position);
         return this;
     }
 

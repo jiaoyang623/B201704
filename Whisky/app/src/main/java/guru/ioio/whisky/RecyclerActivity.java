@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import guru.ioio.whisky.base.RVBindingBaseAdapter;
-import guru.ioio.whisky.base.Utils;
 import guru.ioio.whisky.databinding.ActivityRecycleBinding;
 import guru.ioio.whisky.model.RecyclerBean;
 
@@ -23,6 +22,7 @@ import guru.ioio.whisky.model.RecyclerBean;
 
 public class RecyclerActivity extends Activity implements SwipeRefreshLayout.OnRefreshListener {
     protected ActivityRecycleBinding mBinding;
+    protected RVBindingBaseAdapter<RecyclerBean> mAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,12 +32,12 @@ public class RecyclerActivity extends Activity implements SwipeRefreshLayout.OnR
         mBinding.refresh.setOnRefreshListener(this);
 
         mBinding.recycler.setLayoutManager(getLayoutManager());
-        mBinding.recycler.setAdapter(getAdapter());
+        mBinding.recycler.setAdapter(mAdapter = getAdapter());
     }
 
     protected RVBindingBaseAdapter getAdapter() {
         return new RVBindingBaseAdapter<RecyclerBean>(R.layout.item_recycler, BR.data)
-                .add(getMock(256)).addPresenter(BR.presenter, this);
+                .add(getMock(8)).addPresenter(BR.presenter, this);
     }
 
     protected RecyclerView.LayoutManager getLayoutManager() {
@@ -60,6 +60,7 @@ public class RecyclerActivity extends Activity implements SwipeRefreshLayout.OnR
                     bean.desc = "mBinding.recycler.setLayoutManager(getLayoutManager())";
                     break;
             }
+            bean.position = i;
             list.add(bean);
         }
         return list;
@@ -86,7 +87,7 @@ public class RecyclerActivity extends Activity implements SwipeRefreshLayout.OnR
     }
 
     public boolean onItemClick(RecyclerBean bean) {
-        Utils.toast(bean.title);
+        mAdapter.delete(bean).addToTail(bean);
         return true;
     }
 }

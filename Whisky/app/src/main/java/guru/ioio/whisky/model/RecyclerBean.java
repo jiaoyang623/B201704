@@ -8,6 +8,7 @@ public class RecyclerBean {
     public String title;
     public String desc;
     public String time;
+    public int position;
 
     public RecyclerBean(String title, String desc, String time) {
         this.title = title;
