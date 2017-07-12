@@ -27,20 +27,55 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="声音：" />
+                    android:text="音乐：" />
 
                 <SeekBar
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:max="@{presenter.audioHelper.maxVolume}"
-                    android:progress="@={presenter.audioHelper.volume}" />
+                    android:max="@{presenter.audioHelper.maxMusicVolume}"
+                    android:progress="@={presenter.audioHelper.musicVolume}" />
 
-                <CheckBox
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="@={presenter.audioHelper.mute}"
-                    android:text="静音" />
+                    android:text="通知：" />
+
+                <SeekBar
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="@{presenter.audioHelper.maxNotificationVolume}"
+                    android:progress="@={presenter.audioHelper.notificationVolume}" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="闹铃：" />
+
+                <SeekBar
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="@{presenter.audioHelper.maxAlarmVolume}"
+                    android:progress="@={presenter.audioHelper.alarmVolume}" />
+
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

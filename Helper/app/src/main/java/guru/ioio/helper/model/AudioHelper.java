@@ -15,23 +15,43 @@ public class AudioHelper {
         mAudioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
     }
 
-    public int getMaxVolume() {
+    public int getMaxMusicVolume() {
         return mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
     }
 
 
-    public int getVolume() {
+    public int getMusicVolume() {
         return mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
     }
 
-    public void setVolume(int volume) {
+    public void setMusicVolume(int volume) {
         mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, volume, 0);
     }
 
-    public boolean getMute() {
-        return false;
+    public int getMaxNotificationVolume() {
+        return mAudioManager.getStreamMaxVolume(AudioManager.STREAM_NOTIFICATION);
     }
 
-    public void setMute(boolean isMute) {
+
+    public int getNotificationVolume() {
+        return mAudioManager.getStreamVolume(AudioManager.STREAM_NOTIFICATION);
     }
+
+    public void setNotificationVolume(int volume) {
+        mAudioManager.setStreamVolume(AudioManager.STREAM_NOTIFICATION, volume, 0);
+    }
+
+    public int getMaxAlarmVolume() {
+        return mAudioManager.getStreamMaxVolume(AudioManager.STREAM_ALARM);
+    }
+
+
+    public int getAlarmVolume() {
+        return mAudioManager.getStreamVolume(AudioManager.STREAM_ALARM);
+    }
+
+    public void setAlarmVolume(int volume) {
+        mAudioManager.setStreamVolume(AudioManager.STREAM_ALARM, volume, 0);
+    }
+
 }
