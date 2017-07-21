@@ -11,11 +11,27 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#aaffaa"
         android:padding="5dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <guru.ioio.whisky.widgets.TagView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:lineColor="@{@color/colorAccent}"
+                android:linePadding="@{@dimen/d5dp}"
+                android:lineWidth="@{@dimen/d5dp}"
+                android:selectedTagColor="@{@color/colorRed}"
+                android:selectedTagSize="@{@dimen/d28sp}"
+                android:tagColor="@{@color/colorPrimary}"
+                android:tagDivider="@{`,`}"
+                android:tagSize="@{@dimen/d25sp}"
+                android:tagSpace="@{@dimen/d5dp}"
+                android:tags="@{`AAA,BBB,CCC`}" />
 
             <TextView
                 android:id="@+id/span_text"
