@@ -155,6 +155,12 @@ public class DanmakuView extends View {
                     previousTime = System.currentTimeMillis();
 //                    Log.d(TAG, "start pick new item..");
                     IDanmakuItem di = mWaitingItems.pollFirst();
+
+                    if (di == null && mOnEmptyListener != null) {
+                        mOnEmptyListener.onEmpty();
+                        di = mWaitingItems.pollFirst();
+                    }
+
                     if (di != null) {
                         int indexY = findVacant(di);
                         if (indexY >= 0) {
@@ -371,5 +377,15 @@ public class DanmakuView extends View {
             times.removeFirst();
         }
         return difference > 0 ? times.size() / difference : 0.0;
+    }
+
+    private OnEmptyListener mOnEmptyListener = null;
+
+    public void setOnEmptyListener(OnEmptyListener l){
+        mOnEmptyListener = l;
+    }
+
+    public interface OnEmptyListener {
+        void onEmpty();
     }
 }

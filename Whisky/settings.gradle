@@ -1,1 +1,2 @@
-include ':app'
+include ':app', ':opendanmaku2'
+project(':opendanmaku2').projectDir = new File('opendanmaku')

@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Whisky.iml" filepath="$PROJECT_DIR$/Whisky.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/opendanmaku/opendanmaku2.iml" filepath="$PROJECT_DIR$/opendanmaku/opendanmaku2.iml" />
     </modules>
   </component>
 </project>

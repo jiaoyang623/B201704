@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
 
     <application
         android:name=".base.OneApp"
@@ -27,6 +28,11 @@
         <activity
             android:name=".PannelActivity"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ConstrantActivity"
+            android:screenOrientation="portrait" />
+
         <activity
             android:name=".RecyclerActivity"
             android:screenOrientation="portrait" />
@@ -51,6 +57,14 @@
             android:name=".ExoActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
+
+        <receiver android:name=".UnlockReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.SCREEN_ON" />
+                <action android:name="android.intent.action.SCREEN_OFF" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
