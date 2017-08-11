@@ -21,7 +21,9 @@ public class UnlockReceiver extends BroadcastReceiver {
         } else if (Intent.ACTION_SCREEN_OFF.equals(action)) { // 锁屏
             Utils.toast("ACTION_SCREEN_OFF");
         } else if (Intent.ACTION_USER_PRESENT.equals(action)) { // 解锁
-            Utils.toast("ACTION_USER_PRESENT");
+            Intent openIntent = new Intent(context, AlertWindowActivity.class);
+            openIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(openIntent);
         }
     }
 }

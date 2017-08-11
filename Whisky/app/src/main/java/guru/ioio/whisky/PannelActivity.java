@@ -12,12 +12,16 @@ import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.method.BaseMovementMethod;
 import android.text.style.ClickableSpan;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
 import guru.ioio.whisky.base.Utils;
 import guru.ioio.whisky.databinding.ActivityPannelBinding;
+import guru.ioio.whisky.databinding.FloatTestBinding;
+import guru.ioio.whisky.utils.EditTextHelper;
+import guru.ioio.whisky.utils.FloatWindowHelper;
 
 
 /**
@@ -27,6 +31,8 @@ import guru.ioio.whisky.databinding.ActivityPannelBinding;
 
 public class PannelActivity extends Activity {
     private ActivityPannelBinding mBinding;
+    public FloatWindowHelper floatWindow;
+    public EditTextHelper editHelper;
 
     public CharSequence getContent() {
         String data = getString(R.string.test_too_much);
@@ -52,7 +58,7 @@ public class PannelActivity extends Activity {
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_pannel);
         mBinding.setPresenter(this);
 
-        mBinding.spanText.setMovementMethod(new BaseMovementMethod(){
+        mBinding.spanText.setMovementMethod(new BaseMovementMethod() {
             @Override
             public boolean onTouchEvent(TextView widget, Spannable buffer,
                                         MotionEvent event) {
@@ -93,5 +99,21 @@ public class PannelActivity extends Activity {
                 return super.onTouchEvent(widget, buffer, event);
             }
         });
+
+        initFloatView();
+
+        editHelper = new EditTextHelper(mBinding.edit);
+    }
+
+    public boolean add() {
+        editHelper.addSpannable("@abc");
+        return true;
+    }
+
+
+    private void initFloatView() {
+        FloatTestBinding binding = DataBindingUtil.inflate(LayoutInflater.from(getApplicationContext()), R.layout.float_test, null, false);
+        binding.setPresenter(this);
+        floatWindow = new FloatWindowHelper(this, binding.getRoot());
     }
 }

@@ -40,6 +40,41 @@
                 android:ellipsize="end"
                 android:maxLines="4"
                 android:text="@{presenter.content}" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{(v)->presenter.floatWindow.open()}"
+                    android:text="openWindow" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{(v)->presenter.floatWindow.close()}"
+                    android:text="closeWindow" />
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{(v)->presenter.add()}"
+                    android:text="add" />
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </layout>

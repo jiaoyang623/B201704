@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
         android:name=".base.OneApp"
@@ -28,6 +29,12 @@
         <activity
             android:name=".PannelActivity"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".AlertWindowActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Panel" />
 
         <activity
             android:name=".ConstrantActivity"
