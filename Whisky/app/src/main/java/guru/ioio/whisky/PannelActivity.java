@@ -20,7 +20,7 @@ import android.widget.TextView;
 import guru.ioio.whisky.base.Utils;
 import guru.ioio.whisky.databinding.ActivityPannelBinding;
 import guru.ioio.whisky.databinding.FloatTestBinding;
-import guru.ioio.whisky.utils.EditTextHelper;
+import guru.ioio.whisky.utils.AtTextWatcher;
 import guru.ioio.whisky.utils.FloatWindowHelper;
 
 
@@ -32,7 +32,6 @@ import guru.ioio.whisky.utils.FloatWindowHelper;
 public class PannelActivity extends Activity {
     private ActivityPannelBinding mBinding;
     public FloatWindowHelper floatWindow;
-    public EditTextHelper editHelper;
 
     public CharSequence getContent() {
         String data = getString(R.string.test_too_much);
@@ -101,12 +100,10 @@ public class PannelActivity extends Activity {
         });
 
         initFloatView();
-
-        editHelper = new EditTextHelper(mBinding.edit);
+        mBinding.edit.addTextChangedListener(new AtTextWatcher());
     }
 
     public boolean add() {
-        editHelper.addSpannable("@abc");
         return true;
     }
 

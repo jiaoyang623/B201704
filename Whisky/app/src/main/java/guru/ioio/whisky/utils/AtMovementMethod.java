@@ -5,7 +5,6 @@ import android.text.NoCopySpan;
 import android.text.Selection;
 import android.text.Spannable;
 import android.text.method.BaseMovementMethod;
-import android.text.method.LinkMovementMethod;
 import android.text.method.MovementMethod;
 import android.text.style.ClickableSpan;
 import android.view.KeyEvent;
@@ -203,13 +202,12 @@ public class AtMovementMethod extends BaseMovementMethod {
                     link[0].onClick(widget);
                 } else if (action == MotionEvent.ACTION_DOWN) {
                     Selection.setSelection(buffer,
-                            buffer.getSpanStart(link[0]),
-                            buffer.getSpanEnd(link[0]));
+                            buffer.getSpanStart(link[0]), buffer.getSpanEnd(link[0]));
                 }
 
                 return true;
             } else {
-                Selection.removeSelection(buffer);
+//                Selection.removeSelection(buffer);
             }
         }
 
@@ -235,11 +233,11 @@ public class AtMovementMethod extends BaseMovementMethod {
 
     public static MovementMethod getInstance() {
         if (sInstance == null)
-            sInstance = new LinkMovementMethod();
+            sInstance = new AtMovementMethod();
 
         return sInstance;
     }
 
-    private static LinkMovementMethod sInstance;
+    private static AtMovementMethod sInstance;
     private static Object FROM_BELOW = new NoCopySpan.Concrete();
 }
